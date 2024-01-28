@@ -3,6 +3,17 @@
 import { ref } from "vue" // you need this to use ref()
 
 
+let count = ref(0);
+function increment() {
+  count.value++;
+}
+
+let text = ref("");
+let inputText = ref("");
+
+function addText() {
+  text.value = inputText.value;
+}
 
 </script>
 
@@ -12,10 +23,10 @@ import { ref } from "vue" // you need this to use ref()
 <template>
 
     <div id="navbar" class="container">  
-        <div id="title">David's bootcamp website website</div>
+        <div id="title">Bao's bootcamp website website</div>
         
         <div id="logo">
-            <img src=".cow.jpg" alt="macad cow">
+            <img src="./cow.jpg" alt="macad cow">
     
 
         </div>
@@ -25,9 +36,20 @@ import { ref } from "vue" // you need this to use ref()
 
     <div id="flex">
 
-        <div id="sidebar" class="container"> Sidebar </div>
+        <div id="sidebar" class="container"> Sidebar 
+          <Button @click="increment">
+            <p>You clicked {{ count }} times</p>
+          </Button>
+        </div>
 
-        <div id="main" class="container"> Text input </div>
+        <div id="main" class="container"> Text input 
+          <input v-model="inputText"/>
+          <button @click="addText">
+            <p>You typed: {{ text }}</p>
+          </button>
+
+
+        </div>
     </div>
 
 </template>
@@ -36,6 +58,10 @@ import { ref } from "vue" // you need this to use ref()
 
 <!-- style is where the css code goes -->
 <style scoped>
+#navbar{
+  background-color: #ff6fd1;
+}
+
 html{
     
     background-color: rgb(59, 59, 59); 
